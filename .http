@@ -16,3 +16,14 @@ content-type: application/json
      "title": "FastCampus",
      "content": "Content 11"
 }
+
+###
+
+#
+PUT http://localhost:3000/board/11
+content-type: application/json
+
+{
+     "title": "SlowCampus",
+     "content": "Fix!!"
+}
