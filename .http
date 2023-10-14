@@ -8,3 +8,11 @@ GET http://localhost:3000/board/1
 
 ###
 
+# 게시글 생성하기
+POST http://localhost:3000/board
+content-type: application/json
+
+{
+     "title": "FastCampus",
+     "content": "Content 11"
+}
