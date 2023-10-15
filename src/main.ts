@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Filter 등록
-  app.useGlobalFilters(new HttpExceptionFilter);
+  // app.useGlobalFilters(new HttpExceptionFilter);
 
   // swagger
   const config = new DocumentBuilder()
