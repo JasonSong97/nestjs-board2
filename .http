@@ -36,6 +36,6 @@ DELETE http://localhost:3000/board/1
 
 ###
 
-# 커스텀 데코레이터로 Ip 확인하기
+# 커스텀 데코레이터 확인 + Exception 커스텀 확인
 
 GET http://localhost:3000

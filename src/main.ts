@@ -1,9 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { HttpExceptionFilter } from './exception/http.exception';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // Filter 등록
+  app.useGlobalFilters(new HttpExceptionFilter);
 
   // swagger
   const config = new DocumentBuilder()
