@@ -1,31 +1,31 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { User } from "./user.entity";
 
-@Entity({ name: 'board' })
+@Entity()
 export class Board {
-     
+
      @PrimaryGeneratedColumn({ name: 'id' })
      id: number;
 
+     @ApiProperty({ description: 'user_id' })
      @Column()
-     @ApiProperty({ description: 'user_id'})
      userId: number;
 
+     @ApiProperty({ description: '내용' })
      @Column()
-     @ApiProperty({ description: '내용'})
      content: string;
 
+     @ApiProperty({ description: '수정일' })
      @UpdateDateColumn()
-     @ApiProperty({ description: '생성일'})
-     createdAt: Date;
-
-     @UpdateDateColumn()
-     @ApiProperty({ description: '수정일'})
      updatedAt: Date;
 
-     @ApiProperty({ description: '유저 정보'})
-     @ManyToOne(() => User) // user_id
-     @JoinColumn({ name: 'userId' })
+     @ApiProperty({ description: '생성일' })
+     @CreateDateColumn()
+     createdAt: Date;
+
+     @ApiProperty({ description: '유저정보' })
+     @ManyToOne(() => User)
+     @JoinColumn({name: 'userId'})
      user: User;
 }

@@ -4,23 +4,23 @@ import { Board } from './board.entity';
 
 @Entity()
 export class User {
-
-     @PrimaryGeneratedColumn() // @PrimaryGeneratedColumn: 자동 증가
+     
+     @PrimaryGeneratedColumn()
      id: number;
 
-     @Column({ unique: true })
      @ApiProperty({ description: '유저아이디', example: 'admin' })
+     @Column({ unique: true })
      username: string;
 
+     @ApiProperty({ description: '비밀번호' })
      @Column({ select: false })
-     @ApiProperty({ description: '비밀번호'})
      password: string;
 
+     @ApiProperty({ description: '이름' })
      @Column()
-     @ApiProperty({ description: '이름'})
      name: string;
 
-     @ApiProperty({ description: '작성한 게시글'})
+     @ApiProperty({ description: '작성한 게시글' })
      @OneToMany(() => Board, (board) => board.user)
-     boards: Board[]
+     boards: Board[];
 }

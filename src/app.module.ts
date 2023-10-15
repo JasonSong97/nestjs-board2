@@ -20,6 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: process.env.DB_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // build 시 js로 변경
       synchronize: false, // entity 변경시 DB에 반영?
+      logging: true
     }),
 
     // 하딘: 도메인 성격(계속추가되는 경우)

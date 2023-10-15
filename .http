@@ -13,7 +13,7 @@ POST http://localhost:3000/board
 content-type: application/json
 
 {
-     "title": "FastCampus",
+     "userId": 1,
      "content": "Content 11"
 }
 
@@ -25,7 +25,7 @@ content-type: application/json
 
 {
      "title": "SlowCampus",
-     "content": "Fix!!"
+     "contents": "Fix!!"
 }
 
 ###

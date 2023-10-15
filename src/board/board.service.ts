@@ -83,9 +83,7 @@ export class BoardService {
      }
 
      create(data: CreateBoardDto) {
-          const newBoard = { id: this.getNextId(), ...data };
-          this.boards.push(newBoard);
-          return newBoard;
+          return this.boardRepository.save(data); // create(인스턴스까지만 생성) save(DB까지 입력)
      }
 
      update(id: number, data: UpdateBoardDto) {
