@@ -1,16 +1,18 @@
 import { Controller, Get, Query, HttpStatus, HttpException, Logger } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Ip } from './decorators/ip.decorator';
+import { ConfigService } from '@nestjs/config';
 
 @Controller()
 export class AppController {
 
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService,
+              private readonly configService: ConfigService) {}
   // implements LoggerService -> LoggerService interface -> DI X 직접 생성 필요
   // private readonly logger = new Logger(AppController.name); // 위치
 
   @Get()
-  getHello(): string {
+  getHello(@Ip() ip: string): string {
 
     // test
     // this.logger.log(ip);
@@ -18,6 +20,9 @@ export class AppController {
     // this.logger.error(ip);
     // this.logger.verbose(ip);
     // this.logger.warn(ip);
+
+    // 환경설정 불러오기
+    console.log(this.configService.get<string>('ENVIRONMENT'));
 
     return this.appService.getHello();
   }
