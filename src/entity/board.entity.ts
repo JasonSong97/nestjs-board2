@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { User } from "./user.entity";
 
 @Entity({ name: 'board' })
 export class Board {
@@ -21,5 +22,10 @@ export class Board {
 
      @UpdateDateColumn()
      @ApiProperty({ description: '수정일'})
-     updatedAt: Date
+     updatedAt: Date;
+
+     @ApiProperty({ description: '유저 정보'})
+     @ManyToOne(() => User) // user_id
+     @JoinColumn({ name: 'userId' })
+     user: User;
 }
