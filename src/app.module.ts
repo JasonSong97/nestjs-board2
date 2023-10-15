@@ -10,14 +10,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     // 상단: 1번만 호출, 특정한 경우
     ConfigModule(),
+
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'fastcampus',
-      password: 'fastcampus',
-      database: 'postgres',
-      entities: [__dirname + '/**/*.entity.{.ts,.js}'], // build 시 js로 변경
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      entities: [__dirname + '/**/*.entity{.ts,.js}'], // build 시 js로 변경
       synchronize: false, // entity 변경시 DB에 반영?
     }),
 
