@@ -33,3 +33,9 @@ content-type: application/json
 # 게시글 삭제하기
 
 DELETE http://localhost:3000/board/1
+
+###
+
+# 커스텀 데코레이터로 Ip 확인하기
+
+GET http://localhost:3000
