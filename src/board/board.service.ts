@@ -82,21 +82,18 @@ export class BoardService {
           return board;
      }
 
-     create(data: CreateBoardDto) {
+     async create(data: CreateBoardDto) {
           return this.boardRepository.save(data); // create(인스턴스까지만 생성) save(DB까지 입력)
      }
 
-     update(id: number, data: UpdateBoardDto) {
-          const index = this.getBoardId(id);
-          if (index > -1) {
-               this.boards[index] = {
-                    // seperate 문법: 덮어씌우기(기존데이터 유지하면서)
-                    ...this.boards[index],
-                    ...data,
-               };
-               return this.boards[index];
-          }
-          return null;
+     async update(id: number, data: UpdateBoardDto) {
+          const board = await this.boardRepository.findOneBy({
+               id
+          });
+          if (!board) throw new HttpException('NOT_FOUND', HttpStatus.NOT_FOUND);
+          return this.boardRepository.update(id, {
+            ...data
+          });
      }
 
      delete(id: number) {

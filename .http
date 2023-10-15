@@ -20,12 +20,11 @@ content-type: application/json
 ###
 
 # 게시글 수정하기
-PUT http://localhost:3000/board/11
+PUT http://localhost:3000/board/123
 content-type: application/json
 
 {
-     "title": "SlowCampus",
-     "contents": "Fix!!"
+     "content": "Fix!!"
 }
 
 ###
